@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import { Component } from 'react';
+import axios from 'axios';
 
 class App extends Component {
   state = {
@@ -10,8 +11,8 @@ class App extends Component {
 
   componentDidMount() {
     setTimeout(() => {
-      fetch('https://jsonplaceholder.typicode.com/users')
-      .then(data => data.json()).then(users => {
+      axios.get('https://jsonplaceholder.typicode.com/users')
+      .then(users => users.data).then(users => {
         // console.log(users);
         this.setState({
           users: users,
